@@ -26,7 +26,6 @@ namespace AnneeBissextile.Test
         [InlineData(200)]
         [InlineData(500)]
 
-
         public void IsDivisibleBy100NotDivisibleBy400(ushort year)
         {
             //Given a year that is divisible by 100 but not by 400
@@ -34,6 +33,20 @@ namespace AnneeBissextile.Test
             var isLeap = GregorianCalendar.IsLeapYear(year);
             //Then it should return false
             Assert.False(isLeap);
+        }
+
+        [Theory]
+        [InlineData(4)]
+        [InlineData(8)]
+        [InlineData(104)]
+
+        public void IsDivisibleBy4NotDivisibleBy100(ushort year)
+        {
+            //Given a year that is divisible by 4 but not by 100
+            //When I check if it is a leap year
+            var isLeap = GregorianCalendar.IsLeapYear(year);
+            //Then it should return true
+            Assert.True(isLeap);
         }
 
 

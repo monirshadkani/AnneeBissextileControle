@@ -71,7 +71,7 @@ namespace AnneeBissextile.Test
         [InlineData(-1)]
         [InlineData(-4)]
 
-        public void FalseYears(ushort year)
+        public void FalseYears(int year)
         {
             // Given a year of 0 or negative
             // When I check if it is a leap year

@@ -66,6 +66,19 @@ namespace AnneeBissextile.Test
             Assert.False(isLeap);
         }
 
+        [Theory]
+        [InlineData(0)]
+        [InlineData(-1)]
+        [InlineData(-4)]
+
+        public void FalseYears(ushort year)
+        {
+            // Given a year of 0 or negative
+            // When I check if it is a leap year
+            var isLeap = GregorianCalendar.IsLeapYear(year);
+            // Then it should return false
+            Assert.False(isLeap);
+        }
 
     }
 }

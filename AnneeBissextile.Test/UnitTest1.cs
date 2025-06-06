@@ -49,6 +49,23 @@ namespace AnneeBissextile.Test
             Assert.True(isLeap);
         }
 
+        [Theory]
+        [InlineData(5)]
+        [InlineData(405)]
+        [InlineData(99)]
+        [InlineData(101)]
+        [InlineData(199)]
+        [InlineData(2100)]
+
+        public void IsNotDivisibleBy4(ushort year)
+        {
+            //Given a year that is not divisible by 4 
+            //When I check if it is a leap year
+            var isLeap = GregorianCalendar.IsLeapYear(year);
+            //Then it should return false
+            Assert.False(isLeap);
+        }
+
 
     }
 }

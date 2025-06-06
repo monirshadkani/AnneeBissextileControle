@@ -5,7 +5,17 @@ namespace AnneeBissextile
     {
         public static bool IsLeapYear(int year)
         {
-            return true;
+            if (year % 400 == 0)
+            {
+                return true;
+            }
+
+            if (year % 100 == 0 && year % 400 != 0)
+            {
+                return false;
+            }
+
+            return false;
         }
     }
 }

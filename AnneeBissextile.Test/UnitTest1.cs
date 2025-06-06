@@ -2,15 +2,17 @@ namespace AnneeBissextile.Test
 {
     public class UnitTest1
     {
+        private const ushort ImportantValue4 = 4;
+        private const ushort ImportantValue100 = 100;
+        private const ushort ImportantValue400 = 400;
 
 
 
 
-        [Theory]
-        [InlineData(400)]
-        [InlineData(800)]
-        [InlineData(1200)]
-        [InlineData(1600)]
+        [Theory (DisplayName = "Years that are divisible by 400 are always leap years")]
+        [InlineData(ImportantValue400)]
+        [InlineData(ImportantValue400*2)]
+        [InlineData(ImportantValue400*3)]
 
         public void IsDivisibleBy400(ushort year)
         {
@@ -21,10 +23,10 @@ namespace AnneeBissextile.Test
             Assert.True(isLeap);
         }
 
-        [Theory]
-        [InlineData(100)]
-        [InlineData(200)]
-        [InlineData(500)]
+        [Theory (DisplayName = "Years that are divisible by 100 but not by 400 are not leap years") ]
+        [InlineData(ImportantValue100)]
+        [InlineData(ImportantValue100*2)]
+        [InlineData(ImportantValue100*5)]
 
         public void IsDivisibleBy100NotDivisibleBy400(ushort year)
         {
@@ -35,10 +37,10 @@ namespace AnneeBissextile.Test
             Assert.False(isLeap);
         }
 
-        [Theory]
-        [InlineData(4)]
-        [InlineData(8)]
-        [InlineData(104)]
+        [Theory (DisplayName = "Years that are divisible by 4 and not by 100 are leap years")]
+        [InlineData(ImportantValue4)]
+        [InlineData(ImportantValue4*2)]
+        [InlineData(ImportantValue100+ ImportantValue4)]
 
         public void IsDivisibleBy4NotDivisibleBy100(ushort year)
         {
@@ -49,13 +51,12 @@ namespace AnneeBissextile.Test
             Assert.True(isLeap);
         }
 
-        [Theory]
-        [InlineData(5)]
-        [InlineData(405)]
-        [InlineData(99)]
-        [InlineData(101)]
-        [InlineData(199)]
-        [InlineData(2100)]
+        [Theory (DisplayName = "Years that are not divisible by 4 are never leap years")]
+        [InlineData(ImportantValue4+1)]
+        [InlineData(ImportantValue4 - 1)]
+        [InlineData(ImportantValue100-1)]
+        [InlineData(ImportantValue400+1)]
+
 
         public void IsNotDivisibleBy4(ushort year)
         {
@@ -66,10 +67,10 @@ namespace AnneeBissextile.Test
             Assert.False(isLeap);
         }
 
-        [Theory]
+        [Theory (DisplayName = "Years out of range are not leap years")]
         [InlineData(0)]
-        [InlineData(-1)]
-        [InlineData(-4)]
+        [InlineData(ImportantValue400 * -1)]
+        [InlineData(ImportantValue4 * -1)]
 
         public void FalseYears(int year)
         {
